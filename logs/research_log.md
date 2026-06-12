@@ -12,10 +12,9 @@
 
 ## Log Entry Template
 
-Copy this block for each work session.
+Copy this block for each work session into a new file under `logs/entry_XXX_[title].md`.
 
----
-
+```markdown
 ### Entry #[N] — [Date] — [Session title]
 
 #### 1. Session overview
@@ -33,11 +32,8 @@ Copy this block for each work session.
 
 #### 2. What you built or changed
 
-> *Reviewer question: "What exactly did you implement? Is it clearly described?"*
-
 - **Files changed/created:**
   - `src/models.py` — added ...
-  - `notebooks/02_...` — ...
 - **Key code decisions made:**
   - Why did you write it this way and not another way?
 - **Git commit hash (if applicable):**
@@ -45,8 +41,6 @@ Copy this block for each work session.
 ---
 
 #### 3. Experiment details
-
-> *Reviewer question: "Can I reproduce this? Are all hyperparameters reported?"*
 
 | Hyperparameter | Value used | Reason / source |
 |----------------|------------|-----------------|
@@ -70,8 +64,6 @@ Copy this block for each work session.
 
 #### 4. Results
 
-> *Reviewer question: "Are results clearly reported with sufficient detail? Are error bars shown?"*
-
 **Quantitative results:**
 
 | Model | Accuracy (mean ± std) | Loss | Adaptation speed (steps) | Expert entropy | Notes |
@@ -94,8 +86,6 @@ Copy this block for each work session.
 
 #### 5. Comparison to baseline
 
-> *Reviewer question: "Is the comparison fair? Are baselines strong enough?"*
-
 - Which baseline(s) did you compare against today?
 - Was the comparison fair (same data, same seeds, same compute)?
 - Did your method win / lose / tie?
@@ -105,15 +95,11 @@ Copy this block for each work session.
 
 #### 6. What worked
 
-> *Reviewer question: "What are the positive findings and are they credible?"*
-
 Write specifically — not just "it worked". E.g., "Memory-MoE recovered 12% faster after the task swap at step 500, averaged over 3 seeds."
 
 ---
 
 #### 7. What failed or surprised you
-
-> *Reviewer question: "Did the authors honestly report failures and negative results?"*
 
 - What did not work as expected?
 - Were there bugs? How did you find and fix them?
@@ -123,22 +109,11 @@ Write specifically — not just "it worked". E.g., "Memory-MoE recovered 12% fas
 
 #### 8. Threats to validity
 
-> *Reviewer question: "Are there confounds? Could the results be due to something other than the proposed mechanism?"*
-
-Ask yourself:
-- Could the improvement come from more parameters, not memory?
-- Is the task too easy or synthetic to generalise?
-- Did you tune hyperparameters on the test set accidentally?
-- Could load balancing alone explain the result?
-- Are results seed-sensitive?
-
 Write your honest answers here.
 
 ---
 
 #### 9. Limitations identified today
-
-> *Reviewer question: "Do the authors acknowledge limitations? Are they honest about scope?"*
 
 - What does this result NOT prove?
 - What assumptions were made today that might not hold in general?
@@ -147,8 +122,6 @@ Write your honest answers here.
 ---
 
 #### 10. Paper writing notes
-
-> *Reviewer question: "Is the method section clear enough to reproduce? Are claims backed by evidence?"*
 
 - **Method section note:** One sentence to add/update in the method section.
 - **Results section note:** What table row or figure caption should be added.
@@ -160,8 +133,6 @@ Write your honest answers here.
 
 #### 11. Reviewer pre-emption
 
-> Fill this out once you have any result — even a preliminary one.
-
 | Likely reviewer concern | Your planned response |
 |-------------------------|-----------------------|
 | "Memory adds parameters — is it fair?" | |
@@ -172,7 +143,6 @@ Write your honest answers here.
 | "Is the non-stationary benchmark too artificial?" | |
 | "Is 2 experts enough to show the effect?" | |
 | "Are results statistically significant?" | |
-| Add your own concerns here | |
 
 ---
 
@@ -194,124 +164,13 @@ Write your honest answers here.
 | At least one number recorded? | Yes / No |
 | Research log updated? | Yes (you're reading it) |
 | Paper note written? | Yes / No |
-
----
+```
 
 ---
 
 ## Active Log Entries
 
-### Entry #1 — 12 June 2026 — Repository Setup and Environment Verification
-
-#### 1. Session overview
-
-| Field | Your answer |
-|-------|-------------|
-| Date & time | 12 June 2026, 15:36 |
-| Duration (hrs) | 0.5 |
-| Week in roadmap | Week 0 |
-| Phase | Setup |
-| Goal for this session | Set up the repository structure, verify dependencies, and create placeholders. |
-| Did you achieve it? | Yes |
-
----
-
-#### 2. What you built or changed
-
-- **Files changed/created:**
-  - `README.md`
-  - `requirements.txt`
-  - `.gitignore`
-  - `notebooks/01_synthetic_baseline.ipynb`
-  - `src/data.py`
-  - `src/models.py`
-  - `src/train.py`
-  - `src/metrics.py`
-  - `results/figures/.gitkeep`
-  - `results/tables/.gitkeep`
-- **Key code decisions made:**
-  - Configured git ignore for standard PyTorch/Jupyter artifacts to maintain a clean repo.
-  - Used conda environment `maj` containing PyTorch 2.9.0.
-- **Git commit hash (if applicable):**
-  - `202bdcd65b4f0220fe0b4cb5ec56b49b372e3d40`
-
----
-
-#### 3. Experiment details
-
-N/A for Setup session.
-
----
-
-#### 4. Results
-
-N/A for Setup session.
-
----
-
-#### 5. Comparison to baseline
-
-N/A for Setup session.
-
----
-
-#### 6. What worked
-
-Successfully initialized empty git repository, created folder structure, and confirmed PyTorch import on active `maj` environment.
-
----
-
-#### 7. What failed or surprised you
-
-No failures or surprises.
-
----
-
-#### 8. Threats to validity
-
-N/A for Setup session.
-
----
-
-#### 9. Limitations identified today
-
-N/A for Setup session.
-
----
-
-#### 10. Paper writing notes
-
-- **Method section note:** N/A
-- **Results section note:** N/A
-- **Limitations section note:** N/A
-- **New claim supported today:** N/A
-
----
-
-#### 11. Reviewer pre-emption
-
-N/A for Setup session.
-
----
-
-#### 12. Next session plan
-
-- **Next immediate task:** Implement synthetic data generator and train the dense MLP baseline.
-- **Blocking issue (if any):** None
-- **Reading needed before next session:** Week 1 roadmap literature.
-- **Estimated time needed:** 2 hours
-
----
-
-#### 13. Quick health check
-
-| Check | Status |
-|-------|--------|
-| Code committed to Git? | Yes |
-| At least one graph saved? | No (not yet needed) |
-| At least one number recorded? | No (not yet needed) |
-| Research log updated? | Yes |
-| Paper note written? | No |
+- [**Entry #1 (12 June 2026)**: Repository Setup and Environment Verification](file:///Users/bidwot/Desktop/moe/logs/entry_001_setup.md)
 
 ---
 
@@ -328,7 +187,6 @@ Update this table after every experiment session. This becomes your results sect
 | 5 | | Contextual Memory MoE | Synthetic | Accuracy | | | | |
 | 6 | | Standard MoE | MNIST drift | Accuracy | | | — | |
 | 7 | | Memory MoE (best) | MNIST drift | Accuracy | | | | |
-| ... | | | | | | | | |
 
 ---
 
@@ -368,19 +226,19 @@ Record every significant design decision so you can justify it in the paper.
 
 ## Weekly summary (fill at end of each week)
 
-### Week [N] summary
+### Week 0 summary
 
 | Field | Answer |
 |-------|--------|
-| Week goal | |
-| Achieved? | Yes / Partial / No |
-| Key result this week | |
-| Key failure this week | |
-| Biggest thing learned | |
-| Paper progress | e.g., "Added 2 paragraphs to Method section" |
-| Commits this week | |
-| Hours spent | |
-| Next week's goal | |
+| Week goal | Initialize repository, folder structure, verify environment and dependencies. |
+| Achieved? | Yes |
+| Key result this week | Git repo initialized, requirements.txt created, folder layout prepared, and conda environment maj checked. |
+| Key failure this week | None |
+| Biggest thing learned | Project structure separation of logs and code structure layout. |
+| Paper progress | Drafted research question and hypothesis in README.md. |
+| Commits this week | Initial commits for structure, requirements, README, and logs reorganization. |
+| Hours spent | 0.5 |
+| Next week's goal | Implement synthetic data generation and MLP baseline. |
 
 ---
 
