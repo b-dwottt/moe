@@ -171,6 +171,8 @@ Write your honest answers here.
 ## Active Log Entries
 
 - [**Entry #1 (12 June 2026)**: Repository Setup and Environment Verification](file:///Users/bidwot/Desktop/moe/logs/entry_001_setup.md)
+- [**Entry #2 (12 June 2026)**: Week 1 Synthetic Baseline](file:///Users/bidwot/Desktop/moe/logs/entry_002_week1_baseline.md)
+- [**Entry #3 (12 June 2026)**: Standard MoE and Memory Variant Suite](file:///Users/bidwot/Desktop/moe/logs/entry_003_moe_memory_suite.md)
 
 ---
 
@@ -180,13 +182,16 @@ Update this table after every experiment session. This becomes your results sect
 
 | # | Date | Model | Dataset | Key metric | Value (mean ± std) | Seeds | Better than baseline? | Notes |
 |---|------|-------|---------|------------|-------------------|-------|-----------------------|-------|
-| 1 | | Dense baseline | Synthetic | Accuracy | | | — | |
-| 2 | | Standard MoE | Synthetic | Accuracy | | | — | |
-| 3 | | Scoreboard Memory MoE | Synthetic | Accuracy | | | | |
-| 4 | | Queue Memory MoE | Synthetic | Accuracy | | | | |
-| 5 | | Contextual Memory MoE | Synthetic | Accuracy | | | | |
-| 6 | | Standard MoE | MNIST drift | Accuracy | | | — | |
-| 7 | | Memory MoE (best) | MNIST drift | Accuracy | | | | |
+| 1 | 12 June 2026 | Dense baseline | Synthetic | Accuracy | 0.958 ± 0.000 | 1 | — | Initial Week 1 final-regime evaluation after drift. |
+| 2 | 12 June 2026 | Dense baseline | Synthetic | Accuracy | 0.978 ± 0.003 | 3 | — | Suite rerun with 1500 steps and swap interval 300. |
+| 3 | 12 June 2026 | Random MoE | Synthetic | Accuracy | 0.968 ± 0.005 | 3 | No | Weak expert-capacity baseline; adaptation speed 99.7 steps. |
+| 4 | 12 June 2026 | Standard MoE | Synthetic | Accuracy | 0.979 ± 0.008 | 3 | Yes vs dense adaptation | Adaptation speed 54.2 steps. |
+| 5 | 12 June 2026 | Load-balanced MoE | Synthetic | Accuracy | 0.978 ± 0.007 | 3 | Yes vs dense adaptation | Adaptation speed 52.5 steps; strong alternative explanation. |
+| 6 | 12 June 2026 | Scoreboard Memory MoE | Synthetic | Accuracy | 0.978 ± 0.008 | 3 | Yes vs dense adaptation | Fastest adaptation in suite: 51.4 steps. |
+| 7 | 12 June 2026 | Queue Memory MoE | Synthetic | Accuracy | 0.979 ± 0.009 | 3 | Tie on accuracy | Best/equal final accuracy; adaptation 54.0 steps. |
+| 8 | 12 June 2026 | Contextual Memory MoE | Synthetic | Accuracy | 0.973 ± 0.012 | 3 | Mixed | Fast adaptation 51.8 steps but lower final accuracy. |
+| 9 | | Standard MoE | MNIST drift | Accuracy | | | — | |
+| 10 | | Memory MoE (best) | MNIST drift | Accuracy | | | | |
 
 ---
 
@@ -219,8 +224,9 @@ Record every significant design decision so you can justify it in the paper.
 
 | # | Date | Decision | Alternatives considered | Reason chosen |
 |---|------|----------|------------------------|---------------|
-| 1 | | e.g., used EMA not raw reward | Raw reward, windowed average | EMA is smoother and avoids outlier spikes | |
-| 2 | | | | |
+| 1 | 12 June 2026 | Used soft routing for first multi-model suite | Hard top-1 routing, random routing only | Soft routing gives stable gradients and isolates memory effects before sparse-router experiments. |
+| 2 | 12 June 2026 | Logged adaptation speed as a primary metric | Final accuracy only | Final accuracy saturated near 0.97-0.98, while recovery speed revealed drift behavior. |
+| 3 | 12 June 2026 | Included load-balanced MoE as a baseline | Compare only against standard MoE | Load balancing is a plausible alternative explanation for faster adaptation. |
 
 ---
 
